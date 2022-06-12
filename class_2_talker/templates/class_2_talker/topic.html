@@ -1,0 +1,27 @@
+﻿{% extends "class_2_talker/base.html" %}
+
+{% block content %}
+
+  <p>主题:{{ topic }}</p>
+
+  <p>条目:</p>
+  <p>
+    <a href="{% url 'class_2_talker:new_entry' topic.id %}">添加新条目</a>
+
+  <ul>
+  {% for entry in entries %}
+    <li>
+	<p>{{ entry.date_added|date:'M d,Y H:i' }}</p>
+	<p>{{ entry.text|linebreaks }}</p>
+        <p>
+	  <a href="{% url 'class_2_talker:edit_entry' entry.id %}">编辑条目</a>
+	</p>
+      </li>
+    {% empty %}
+	<li>还没有条目呢，添加一下吧！</li>
+    {% endfor %}
+    </ul>
+
+
+
+{% endblock content %}

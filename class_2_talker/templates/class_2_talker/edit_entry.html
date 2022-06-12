@@ -1,0 +1,15 @@
+﻿{% extends "class_2_talker/base.html" %}
+
+{% block content %}
+  <p><a href="{% url 'class_2_talker:topic' topic.id %}">{{ topic }}</a></p>
+
+
+  <p>编辑：</p>
+
+  <form action="{% url 'class_2_talker:edit_entry' entry.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">保存修改</button>
+  </form>
+
+{% endblock content %}

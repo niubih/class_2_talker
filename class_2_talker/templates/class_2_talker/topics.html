@@ -1,0 +1,19 @@
+﻿{% extends "class_2_talker/base.html" %}
+
+{% block content %}
+
+  <p>主题</p>
+
+  <ul>
+    {% for topic in topics %}
+	<li>
+	  <a href="{% url 'class_2_talker:topic' topic.id %}">{{ topic }}</a>
+	</li>
+    {% empty %}
+	<li>还没有主题呢，添加一下吧！</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'class_2_talker:new_topic' %}">添加一个新主题</a>
+
+{% endblock content %}
